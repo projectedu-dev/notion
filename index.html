@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTEDU</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-container">
+            <div class="lock-icon">🔒</div>
+            <h1>부여받은 코드를 입력하세요</h1>
+            <p>이 페이지는 보호되어 있습니다</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="schoolcode">학교코드</label>
+                    <input 
+                        type="password" 
+                        id="schoolcode" 
+                        placeholder="학교코드를 입력하세요"
+                        required
+                        autocomplete="off"
+                    >
+                    <label for="studentcode">학생코드</label>
+                    <input 
+                        type="password" 
+                        id="studentcode" 
+                        placeholder="학생코드를 입력하세요"
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+                <button type="submit">확인</button>
+                <div class="error-message" id="errorMessage">
+                    ❌ 코드가 올바르지 않습니다
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <iframe id="mainFrame" src=""></iframe>
+
+    <script src="url.js"></script>
+</body>
+</html>
