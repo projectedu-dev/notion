@@ -1,6 +1,11 @@
-const CODE = {};
-CODE['abcd'] = ['1234','1235','1546']
-CODE['schw123as'] = ['1234','1235','1546']
+const CODE1 = {};
+CODE1['abcd'] = '1';
+CODE1['schw123as'] = '2';
+
+const CODE2 = {};
+CODE2['1'] = 'abcd';
+CODE2['2'] = 'schw123as';
+
 
 const INFO = {};
 INFO['abcd'] = {
@@ -19,12 +24,16 @@ const mainFrame = document.getElementById('mainFrame');
 const errorMessage = document.getElementById('errorMessage');
 const schoolcodeInput = document.getElementById('schoolcode');
 const studentcodeInput = document.getElementById('studentcode');
+let TARGET_CODE = ""
 
 window.addEventListener('DOMContentLoaded', () => {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const target = sessionStorage.getItem('target');
+    console.log(CODE2[target]);
     if (isLoggedIn === 'true') {
-        showMainContent();
+        showMainContent(CODE2[target]);
     }
+    
 });
 
 loginForm.addEventListener('submit', (e) => {
@@ -37,6 +46,7 @@ loginForm.addEventListener('submit', (e) => {
         if(INFO[schoolcode].PASSWORD.includes(studentcode))
         {
             sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('target', CODE1[schoolcode]);
             errorMessage.classList.remove('show');
             showMainContent(schoolcode);
         }
@@ -82,6 +92,6 @@ function showMainContent(schoolcode) {
 
 // 페이지 새로고침 시 세션 유지 (선택사항)
 // 세션 유지를 원하지 않으면 아래 코드 삭제
-window.addEventListener('beforeunload', () => {
-    // sessionStorage.removeItem('isLoggedIn'); // 이 줄의 주석을 해제하면 새로고침 시 재로그인 필요
-});
+// window.addEventListener('beforeunload', () => {
+//     // sessionStorage.removeItem('isLoggedIn'); // 이 줄의 주석을 해제하면 새로고침 시 재로그인 필요
+// });
